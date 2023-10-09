@@ -6,9 +6,9 @@ public class Rank {
     private String nameOfRank;
     private double salary;
 
-    public Rank(String initialNameOfRank, double initialSalary) {
-        this.nameOfRank = initialNameOfRank;
-        this.salary = initialSalary;
+    public Rank(String nameOfRank, double salary) {
+        this.nameOfRank = nameOfRank;
+        this.salary = salary;
     }
 
     public String getNameOfRank() {

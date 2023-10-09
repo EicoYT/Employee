@@ -1,7 +1,9 @@
 package Main_Code;
 
 import Employees.Employee;
+import Employees.ID;
 import Employees.Rank;
+import Employees.SecurityGuard;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -17,6 +19,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         List<Employee> allEmployees = new ArrayList<>();
         List<Rank> allRanks = new ArrayList<>();
+        List<ID> allIDs = new ArrayList<>();
+        List<SecurityGuard> allSecurity = new ArrayList<>();
         Rank employee = new Rank("Employee", 2000);
         Rank teamLeader = new Rank("Team Leader", 3000);
         Rank groupLeader = new Rank("Group Leader", 5000);
@@ -34,6 +38,8 @@ public class Main {
             System.out.println("Type 3 to add a list of Employees from a file (please follow: name,rank example: Hans,Team Leader)");
             System.out.println("Type 4 to create a txt file with the existing list of employees");
             System.out.println("Type 5 to Modify a Rank");
+            System.out.println("Type 6 to create a new Security Guard");
+            System.out.println("Type 13 to see all Security Guards and their Security Number");
             System.out.println("Type 14 to see all Ranks and their default Salary's");
             System.out.println("Type 15 to see a list of all Employees");
             System.out.println("Type 20 to end the Program");
@@ -158,6 +164,54 @@ public class Main {
                     } else {
                         System.out.println("Please confirm that you wrote the name correct! (Employee, Team Leader, Group Leader and Manager");
                     }
+                }
+            }
+            if (uInput == 6) {
+                while (true) {
+                    System.out.println("You need an ID to create guards. Type 1 to create one, Type 2 to select one, Press enter to go back");
+                    String input = scanner.nextLine();
+                    if (input.equals(1)) {
+                        System.out.println("Give the ID a number");
+                        String iDNumber = scanner.nextLine();
+                        System.out.println("Now give it a rank (1-5) this defines in what places the guard can go. 5 is in every even really important places. 1 is only Employee Offices and Security Room");
+                        int iDRank = Integer.parseInt(scanner.nextLine());
+                        ID first = new ID(iDRank, iDNumber);
+                        allIDs.add(first);
+                        System.out.println("ID created");
+                    }
+                    if (input.equals(2)) {
+                        while (true) {
+                            System.out.println("Which ID do you want to use? (Type the Number)");
+                            for (ID first : allIDs) {
+                                System.out.println(first);
+                            }
+                            String iD = scanner.nextLine();
+                            for (ID first : allIDs) {
+                                if (first.getNumberOfID().equals(iD)) {
+                                    int rank = first.getRankOfID();
+                                    ID second = new ID(rank, iD);
+                                    System.out.println("Give a name for the Guard");
+                                    String name = scanner.nextLine();
+                                    System.out.println("Give the Guard a salary");
+                                    double salary = Integer.parseInt(scanner.nextLine());
+                                    SecurityGuard third = new SecurityGuard(name, salary, second);
+                                    allSecurity.add(third);
+                                    System.out.println("Guard created!");
+                                } else {
+                                    System.out.println("Incorrect number");
+                                }
+                            }
+                            break;
+                        }
+                    }
+                    if (input.isEmpty()) {
+                        break;
+                    }
+                }
+            }
+            if (uInput == 13) {
+                for (SecurityGuard first : allSecurity) {
+                    System.out.println(first);
                 }
             }
             if (uInput == 14) {
