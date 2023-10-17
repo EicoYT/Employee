@@ -43,12 +43,12 @@ public class Main {
             int uInput = Integer.parseInt(scanner.nextLine());
 
             if (uInput == 20) {
-                System.out.println("Did you safe your progress? if you end the program, you will lose all your progress");
+                System.out.println("Did you save your progress? if you end the program, you will lose all your progress");
                 System.out.println("if you really wanna end the program, type 20");
                 if (uInput == 20) {
                     break;
                 }
-                System.out.println("if you wanna safe your progress, press Enter, then type 3 or 4 depending on how you wanna safe your progress");
+                System.out.println("if you wanna save your progress, press Enter, then type 3 or 4 depending on how you wanna save your progress");
             }
             if (uInput == 1) {
                 System.out.println("What is the name of the Employee?");
