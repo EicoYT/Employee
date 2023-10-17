@@ -1,9 +1,6 @@
 package Main_Code;
 
-import Employees.Employee;
-import Employees.ID;
-import Employees.Rank;
-import Employees.SecurityGuard;
+import Employees.*;
 
 import java.io.File;
 import java.nio.file.Files;
