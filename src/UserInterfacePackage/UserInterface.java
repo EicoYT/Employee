@@ -17,10 +17,10 @@ public class UserInterface {
     List<String> namesOfRanks = new ArrayList<>();
     List<ID> allIDs = new ArrayList<>();
     List<SecurityGuard> allSecurity = new ArrayList<>();
-    Rank employee = new Rank("Employee", 2000);
-    Rank teamLeader = new Rank("Team Leader", 3000);
-    Rank groupLeader = new Rank("Group Leader", 5000);
-    Rank manager = new Rank("Manager", 7500);
+    Rank employee = new Rank("Employee", 2000, 1);
+    Rank teamLeader = new Rank("Team Leader", 3000, 2);
+    Rank groupLeader = new Rank("Group Leader", 5000, 3);
+    Rank manager = new Rank("Manager", 7500, 4);
 
     public UserInterface() {
         this.scanner = new Scanner(System.in);

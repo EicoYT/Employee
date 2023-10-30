@@ -27,6 +27,7 @@ public class FileMethods {
                     if (comparingRank.getNameOfRank().equals(rank)) {
                         Employee second = new Employee(name, comparingRank);
                         allEmployees.add(second);
+                        System.out.println("Employees added");
                     }
                 }
             }
@@ -44,9 +45,6 @@ public class FileMethods {
             while (true) {
                 if (endingOfFile.equals("excel")) {
                     endingOfFile = "csv";
-                    break;
-                } else if (endingOfFile.equals("txt")) {
-                    endingOfFile = "txt";
                     break;
                 } else {
                     System.out.println("this file type is not supported yet!");
