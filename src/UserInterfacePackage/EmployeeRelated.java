@@ -16,7 +16,7 @@ public class EmployeeRelated {
         }
     }
 
-    public static void creatingEmployee(Scanner scanner, List<Employee> employees, List<Rank> allRanks, List<String> namesOfRanks, List<String> namesOfEmployees, List<Employee> allEmployees) {
+    public static void creatingEmployee(Scanner scanner, List<Rank> allRanks, List<String> namesOfRanks, List<String> namesOfEmployees, List<Employee> allEmployees) {
         System.out.println("What is the name of the Employee?");
         String nameOfNewEmployee = scanner.nextLine();
         while (true) {
@@ -31,14 +31,16 @@ public class EmployeeRelated {
                 System.out.println("Select between: ");
                 PrintMethods.printRanks(allRanks);
                 while (true) {
-                    if (namesOfEmployees.contains(nameOfNewEmployee)) {}
+                    if (namesOfEmployees.contains(nameOfNewEmployee)) {
+                    }
                     String userSelectedRank = scanner.nextLine();
                     if (namesOfRanks.contains(userSelectedRank)) {
                         for (Rank rankOfNewEmployee : allRanks) {
                             if (rankOfNewEmployee.getNameOfRank().equals(userSelectedRank)) {
                                 Employee newEmployee = new Employee(nameOfNewEmployee, rankOfNewEmployee);
-                                employees.add(newEmployee);
+                                allEmployees.add(newEmployee);
                                 System.out.println(newEmployee.getName() + " was created!");
+                                namesOfEmployees.add(newEmployee.getName());
                                 if (allEmployees.contains(newEmployee)) {
                                     break;
                                 }
@@ -55,22 +57,43 @@ public class EmployeeRelated {
     }
 
 
-    public static void promotingSomeone(Scanner scanner, List<Employee> allEmployees, List<Rank> allRanks) {
+    public static void promotingSomeone(Scanner scanner, List<Employee> allEmployees, List<Rank> allRanks, List<String> namesOfRanks, List<String> namesOfEmployees) {
         System.out.println("Who do you want to promote?");
         String uName = scanner.nextLine();
+        while (true) {
+            if (uName.isEmpty()) {
+                System.out.println("Please enter a name!");
+                uName = scanner.nextLine();
+            } else if (namesOfEmployees.contains(uName)) {
+                break;
+            }
+        }
         for (Employee promotingEmployee : allEmployees) {
             if (promotingEmployee.getName().equals(uName)) {
                 System.out.println("To what do you wanna promote " + promotingEmployee.getName() + "?");
                 PrintMethods.printRanks(allRanks);
                 String promotion = scanner.nextLine();
-                for (Rank g : allRanks) {
-                    if (g.getNameOfRank().equals(promotion)) {
-                        promotingEmployee.setRank(g);
+                while (true) {
+                    if (!(namesOfRanks.contains(promotion))) {
+                        System.out.println("please enter a Rank that is on the list");
+                        promotion = scanner.nextLine();
+                    } else if (!(promotion.isEmpty())) {
+                        namesOfRanks.add(promotion);
+                        for (Rank g : allRanks) {
+                            if (g.getNameOfRank().equals(promotion)) {
+                                promotingEmployee.setRank(g);
+                                System.out.println(promotingEmployee.getName() + " was promoted!");
+                                break;
+                            }
+                        }
+                        break;
                     }
                 }
             }
         }
+
     }
+
 
     public static void creatingID(Scanner scanner, List<ID> allIDs) {
         System.out.println("Give the ID a number");

@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class UserInterface {
     private Scanner scanner;
     List<Employee> allEmployees = new ArrayList<>();
-    List <String> namesOfEmployees = new ArrayList<>();
+    List<String> namesOfEmployees = new ArrayList<>();
     List<Rank> allRanks = new ArrayList<>();
     List<String> namesOfRanks = new ArrayList<>();
     List<ID> allIDs = new ArrayList<>();
@@ -43,11 +43,28 @@ public class UserInterface {
                 }
             }
             if (uInput == 1) {//creating new employee
-                EmployeeRelated.creatingEmployee(scanner, allEmployees, allRanks, namesOfRanks, namesOfEmployees, allEmployees);
+                EmployeeRelated.creatingEmployee(scanner, allRanks, namesOfRanks, namesOfEmployees, allEmployees);
 
             }
             if (uInput == 2) {//promoting someone
-                EmployeeRelated.promotingSomeone(scanner, allEmployees, allRanks);
+                while (true) {
+                    if (!(allEmployees.isEmpty())) {
+                        EmployeeRelated.promotingSomeone(scanner, allEmployees, allRanks, namesOfRanks, namesOfEmployees);
+                        break;
+                    }
+                    if (allEmployees.isEmpty()) {
+                        System.out.println("You have to create at least one Employee!");
+                        System.out.println("Type 1 to create an Employee");
+                        System.out.println("Type 2 to show options");
+                        uInput = Integer.parseInt(scanner.nextLine());
+                        if (uInput == 2) {
+                            break;
+                        }
+                        if (uInput == 1) {
+                            EmployeeRelated.creatingEmployee(scanner, allRanks, namesOfRanks, namesOfEmployees, allEmployees);
+                        }
+                    }
+                }
             }
             if (uInput == 3) {//Adding a List through a File, TxT and CSV
                 FileMethods.addingAListThroughAFileTxTAndCSV(scanner, allRanks, allEmployees);
