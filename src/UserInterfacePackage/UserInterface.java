@@ -83,7 +83,6 @@ public class UserInterface {
             }
             if (uInput == 14) {//Prints all Ranks
                 PrintMethods.printRanks(allRanks);
-                System.out.println(allRanks.size());
             }
             if (uInput == 15) {//Prints all Employees
                 PrintMethods.printEmployees(allEmployees);
